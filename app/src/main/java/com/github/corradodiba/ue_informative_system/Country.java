@@ -1,6 +1,11 @@
 package com.github.corradodiba.ue_informative_system;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.UUID;
 
 public class Country implements Serializable {

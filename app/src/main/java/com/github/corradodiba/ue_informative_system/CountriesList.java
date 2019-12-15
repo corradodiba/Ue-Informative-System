@@ -2,14 +2,16 @@ package com.github.corradodiba.ue_informative_system;
 
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class CountriesList {
 
     private static final CountriesList ourInstance = new CountriesList();
-    public List<Country> countryList;
+    public List<Country> contriesList;
 
     static CountriesList getInstance() {
 
@@ -28,11 +30,31 @@ public class CountriesList {
         Country slovenia = new Country(R.drawable.slovenia,R.string.slovenia, R.string.slovenia_area, R.string.slovenia_population);
         Country unitedKingdom = new Country(R.drawable.uk,R.string.unitedKingdom,R.string.unitedKingdom_area,R.string.unitedKingdom_population);
 
-        countryList = Arrays.asList( slovakia, estonia, greece, latvia, poland, austria, slovenia, unitedKingdom, netherlands, luxembourg );
+        contriesList = Arrays.asList(austria, estonia, greece, latvia, poland, slovenia, slovakia, unitedKingdom, netherlands, luxembourg );
     }
 
 
     public List<Country> getCountriesList() {
-        return countryList;
+        User user = User.getInstance();
+        if (user.email.equals("corry233@gmail.com")) {
+            return contriesList;
+        }
+        else {
+            return getRandomCountriesList(5);
+        }
+    }
+
+    public ArrayList<Country> getRandomCountriesList(int quantity) {
+        Random rand = new Random();
+        ArrayList<Country> countries = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            int index = rand.nextInt(contriesList.size() - 1);
+            if (countries.contains(contriesList.get(index))) {
+                i--;
+                continue;
+            }
+            countries.add(contriesList.get(index));
+        }
+        return countries;
     }
 }

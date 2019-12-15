@@ -19,13 +19,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
-        if (fragment == null) {
-            fragment = new CountriesFragment();
-            fm.beginTransaction().add(R.id.fragment_container, fragment).commit();
+        if (savedInstanceState == null) {
+            if (fragment == null) {
+                fragment = new CountriesFragment();
+                fm.beginTransaction().add(R.id.fragment_container, fragment).commit();
+            }
         }
-
-         Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
     }
 
     @Override

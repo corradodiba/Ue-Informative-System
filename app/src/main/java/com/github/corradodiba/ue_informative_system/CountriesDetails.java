@@ -29,7 +29,7 @@ public class CountriesDetails extends AppCompatActivity {
         this.area.setText(country.getArea());
         this.population = findViewById(R.id.population_country);
         this.population.setText(country.getPopulation());
-        this.imageCountry = findViewById(R.id.image);
+        this.imageCountry = findViewById(R.id.country_image);
         this.imageCountry.setImageResource(country.getLogo());
 
     }

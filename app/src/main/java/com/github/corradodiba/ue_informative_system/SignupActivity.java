@@ -88,10 +88,12 @@ public class SignupActivity extends AppCompatActivity {
                     public void run() {
                         String name = _nameText.getText().toString();
                         String address = _addressText.getText().toString();
-                        String email = _emailText.getText().toString();
                         String mobile = _mobileText.getText().toString();
-                        String password = _passwordText.getText().toString();
                         String reEnterPassword = _reEnterPasswordText.getText().toString();
+
+                        final String email = _emailText.getText().toString();
+                        final String password = _passwordText.getText().toString();
+                        final User user = User.getInstance();
 
                         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -100,6 +102,8 @@ public class SignupActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     onSignupFailed();
                                 } else {
+                                    user.setEmail(email);
+                                    user.setPassword(password);
                                     onSignupSuccess();
                                 }
                                 progressDialog.dismiss();
@@ -112,7 +116,8 @@ public class SignupActivity extends AppCompatActivity {
 
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
-        setResult(RESULT_OK, null);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 

@@ -9,8 +9,7 @@
     <string name="login">login</string>
     <string name="place_username">Insert username</string>
     <string name="place_password">Insert password</string>
-    <string name="text_ue">Welcome</string>
-    <string name="logo_ue">UE Logo</string>
+    <string name="title_auth_page">Union European Informative System</string>
 
     <string name="austria">Austria</string>
     <string name="austria_area">83.879 km²</string>
@@ -51,6 +50,9 @@
     <string name="unitedKingdom">United Kingdom</string>
     <string name="unitedKingdom_area">241.930 km²</string>
     <string name="unitedKingdom_population">67.691.582</string>
+
+
+
 
 
 
