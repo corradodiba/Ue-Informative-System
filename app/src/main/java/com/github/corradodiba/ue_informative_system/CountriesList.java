@@ -11,7 +11,7 @@ import java.util.Random;
 public class CountriesList {
 
     private static final CountriesList ourInstance = new CountriesList();
-    public List<Country> contriesList;
+    public List<Country> countriesList;
 
     static CountriesList getInstance() {
 
@@ -30,14 +30,14 @@ public class CountriesList {
         Country slovenia = new Country(R.drawable.slovenia,R.string.slovenia, R.string.slovenia_area, R.string.slovenia_population);
         Country unitedKingdom = new Country(R.drawable.uk,R.string.unitedKingdom,R.string.unitedKingdom_area,R.string.unitedKingdom_population);
 
-        contriesList = Arrays.asList(austria, estonia, greece, latvia, poland, slovenia, slovakia, unitedKingdom, netherlands, luxembourg );
+        countriesList = Arrays.asList(austria, estonia, greece, latvia, poland, slovenia, slovakia, unitedKingdom, netherlands, luxembourg );
     }
 
 
     public List<Country> getCountriesList() {
         User user = User.getInstance();
-        if (user.email.equals("corry233@gmail.com")) {
-            return contriesList;
+        if (user.email.equals("corrado.dibattista@stevejobs.academy")) {
+            return countriesList;
         }
         else {
             return getRandomCountriesList(5);
@@ -48,12 +48,12 @@ public class CountriesList {
         Random rand = new Random();
         ArrayList<Country> countries = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
-            int index = rand.nextInt(contriesList.size() - 1);
-            if (countries.contains(contriesList.get(index))) {
+            int index = rand.nextInt(countriesList.size() - 1);
+            if (countries.contains(countriesList.get(index))) {
                 i--;
                 continue;
             }
-            countries.add(contriesList.get(index));
+            countries.add(countriesList.get(index));
         }
         return countries;
     }
