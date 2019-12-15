@@ -1,6 +1,8 @@
 package com.github.corradodiba.ue_informative_system;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +16,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
+        if (fragment == null) {
+            fragment = new CountriesFragment();
+            fm.beginTransaction().add(R.id.fragment_container, fragment).commit();
+        }
 
-        Intent intent = new Intent(this, LoginActivity.class);
+         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
